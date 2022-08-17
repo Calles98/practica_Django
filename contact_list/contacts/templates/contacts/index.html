@@ -1,0 +1,38 @@
+{% extends 'contacts/base/base.html' %}
+{% load static %}
+
+{% block title %}All Contacts{% endblock %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'contacts/styles/all-contacts.css' %}">
+{% endblock %}
+
+{% block main_heading %}
+Contacts
+{% endblock %}
+
+{% block header_content %}
+<p>Current Contact List</p>
+{% endblock %}
+
+{% block body %}
+<section>
+    <h2>Current Contacts</h2>
+    <ol>
+        {% for contact in contacts %}
+        <li class="meetup-item">
+            <article>
+                <div class="meetup-summary">
+                    <div class="meetup-details">
+                        <h3>Name: {{ contact.first_name }} {{ contact.last_name }}</h3>
+                        <h3> Email: {{ contact.email }}</h3>
+                        <a href="{% url 'edit-contact' contact.slug %}" class="btn btn-primary btn-lg active" role="button" aria-pressed="true">Edit Contact</a>
+                    </div>
+                </div>
+            </article>
+        </li>
+        {% endfor %}
+    </ol>
+    <a href="{% url 'create-contact' %}" class="btn btn-success btn-lg active" role="button" aria-pressed="true">Add New Contact</a>
+</section>
+{% endblock %}

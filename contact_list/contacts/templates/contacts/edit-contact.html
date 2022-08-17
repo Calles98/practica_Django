@@ -1,0 +1,35 @@
+{% extends 'contacts/base/base.html' %}
+{% load static %}
+
+{% block title %}
+{{ contact.first_name }}
+{% endblock %}
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'contacts/styles/contacts-details.css' %}">
+{% endblock %}
+
+{%  block main_heading %}
+<h1>something</h1>
+{% endblock %}
+    
+{% block body %}
+
+{% if contact_found %}
+<article>
+    <section id="details">
+        <form action="" method="POST">
+            {% csrf_token %}
+            <h2>Contact Info</h2>
+            <h3>First Name: {{ contact.first_name }}</h3>
+            <h3>Last Name: {{ contact.last_name }}</h3>
+            <h3>email: {{ contact.email }}</h3>
+            <button type="submit" class="btn btn-danger btn-lg">Delete Contact</button>
+        </form>
+    </section>
+</article>
+{% else %}
+<p>No contact found for this slug</p>
+{% endif %}
+
+{% endblock %}

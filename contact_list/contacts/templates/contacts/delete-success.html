@@ -1,0 +1,19 @@
+{% extends 'contacts/base/base.html' %}
+
+{% load static %}
+
+{% block title %} Deleted {% endblock %}
+
+
+{% block site_css %}
+<link rel="stylesheet" href="{% static 'contacts/styles/delete-success.css' %}">
+{% endblock %}
+
+
+{% block body %}
+<section id="confirmation">
+    <h2>Contact Deleted Successfully</h2>
+    <a href="{% url 'all-contacts' %}">Start Page</a>
+</section>
+
+{% endblock %}
